@@ -6,18 +6,17 @@
 
 *The entire contents of the sample resume is a joke. I never made an Amazon review bot or have a PhD in Global International Business ML AI Crypto ChatGPT Computing Science.*
 
-
 ## Setup
 
 The template was tested in:
 
-- Fedora with TexLive (medium scheme) + Neovim with Neovim with the latest [VimTeX](https://github.com/lervag/vimtex) plug-in
-- MacTeX (Homebrew No-GUI install) + Neovim and VimTex
+- Fedora with TexLive (medium scheme)
+- MacTeX (Homebrew No-GUI install)
 - [Overleaf](https://www.overleaf.com/)
 
 1. Clone this repository or upload it to Overlaf
 2. Choose a font (located around line 30) by uncommenting one and commenting the others
-3. Compile it using 
+3. Compile it using `pdflatex theosume.tex` or preferred LaTeX editor
 
 ## Updating Information
 
