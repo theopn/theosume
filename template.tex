@@ -1,0 +1,242 @@
+%
+% Theo's Resume Template
+% https://github.com/theosume
+% Compilation tested in:
+% - MacTeX + Neovim with VimTex
+% - Fedora 38 dnf texlive-scheme-medium + Neovim with VimTex
+% - Overleaf
+%
+% Inspirations:
+% - https://github.com/aretrosen/kyvernetes-resume/blob/master/kyvernitis-resume.cls
+% - https://github.com/sb2nov/resume
+% - https://www.overleaf.com/latex/templates/abey-resume-template/jxstkffrxxmh
+%
+
+\documentclass[letterpaper,11pt]{article} % letterpaper, 10pt is the default
+\usepackage[utf8]{inputenc}
+
+\usepackage[usenames,dvipsnames]{color} % Color definition
+\usepackage{enumitem} % Adding options (label, margin, etc.) to itemize
+\usepackage{fontawesome} % icons
+\usepackage[margin=0.3in]{geometry} % Geometry package to handle margin better
+\usepackage[hidelinks]{hyperref} % Hyperlink
+\usepackage{tabularx} % List items side-by-side
+\usepackage{titlesec} % Reformat section
+
+\usepackage[T1]{fontenc} % Better font rendering
+% Fonts
+%\usepackage{charter}
+%\usepackage[sfdefault]{roboto}
+\usepackage[default]{sourcesanspro}
+
+% Hyperlink color
+\hypersetup{
+  colorlinks=true,
+  urlcolor=NavyBlue
+}
+
+% Generate to unicode for ATS compatibility
+\pdfgentounicode=1
+
+% No indentation
+\setlength{\parindent}{0pt}
+
+% Reformatting \section
+\titleformat{\section}
+  {                                         % Font for the command
+  \vspace{-1em}
+  \color{Magenta}\scshape\raggedright\Large}
+  {}                                        % label. Leave empty to remove numbering
+  {0em}                                     % separation between label and title
+  {}                                        % commands before section title
+  [\titlerule \vspace*{-0.5em}]             % commands after
+
+% Commands
+
+% Display your name BIG
+%
+% arg #1: Your name
+\newcommand{\bigname}[1]{
+  \textbf{\Huge \scshape #1} \\ \vspace*{0.5em}
+}
+
+% Commands for links
+% arg #1: Email
+\newcommand{\email}[1]{
+  \raisebox{-0.2\height}\faEnvelope\
+  \href{mailto:#1}{\underline{#1}} \nobreakspace{}
+}
+% arg #1: Phone number
+\newcommand{\phone}[1]{
+  \raisebox{-0.2\height}\faPhone\
+  \href{tel:#1}{\underline{#1}} ~
+}
+% arg #1: Website URL (without https://)
+\newcommand{\website}[1]{
+  \raisebox{-0.2\height}\faLink\
+  \href{https://#1}{\underline{#1}} ~
+}
+% arg #1: GitHub username
+% @ in front of the username will be displayed
+\newcommand{\github}[1]{
+  \raisebox{-0.2\height}\faGithub\
+  \href{https://github.com/#1}{\underline{@#1}} ~
+}
+% arg #1: LinkedIn username
+% @ in front of the username will be displayed
+\newcommand{\linkedin}[1]{
+  \raisebox{-0.2\height}\faLinkedinSquare\
+  \href{https://linkedin.com/in/#1}{\underline{@#1}} ~
+}
+
+% Commands for resume items
+
+% Display four items on the far left and far right across two lines
+%
+% arg #1 Main item (bold large)                                 : e.g., University name, employer name
+% arg #2 Item to the right of the main item (bold small)        : e.g, University location, employer location
+% arg #3 Secondary item (italics large)                         : e.g., Major, specific job title
+% arg #4 Item to the right of the secondary item (italics small): e.g., empolyment dates
+\newcommand{\fourItems}[4]{
+  \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{\large #1} & \textbf{\small #2} \\
+    \textit{\large #3} & \textit{\small #4} \\
+  \end{tabular*}
+
+  \vspace*{-0.5em}
+}
+
+% Display two text items on the far left and right side.
+% Useful as the extension of the \fourItems. e.g.: If you had multiple jobs under a same company
+% \fourItems{Company}{Location}
+%           {Latest role}{Fairly recent -- Very recent}
+% - Description, description
+% \twoItems{Older role}{3 years ago -- 1 year ago}
+% - Description, description, description ...
+%
+% arg #1 Secondary item (italics large)                         : e.g., Major, specific job title
+% arg #2 Item to the right of the secondary item (italics small): e.g., empolyment dates
+\newcommand{\twoItems}[2]{
+  \begin{tabular*}{1.0\textwidth}{l@{\extracolsep{\fill}}r}
+    \textit{\large #1} & \textit{\small #2} \\
+  \end{tabular*}
+
+  \vspace*{-0.5em} % or -10pt
+}
+
+% Itemize sequence to maximize a space use
+\newenvironment{tightItemize}
+  {\begin{itemize}[itemsep=-0.3em]}
+  {\end{itemize}\vspace*{-0.5em}}
+
+% Resume Starts
+% ------------------------------------------------------------------------------
+
+\begin{document}
+
+\thispagestyle{empty} % Remove footer
+
+% Header
+% ------------------------------------------------------------------------------
+
+%\begin{center}
+  \bigname{Theo Park}
+  \email{no-free-email@gmail.com}
+  |
+  \github{theopn}
+  |
+  \linkedin{theo-park}
+  |
+  \website{theopark.me}
+  |
+  \raisebox{-0.2\height}\faYoutube\
+  \href{https://youtu.be/dQw4w9WgXcQ}{\underline{YouTube Channel}} ~
+%\end{center}
+
+% Education
+% ------------------------------------------------------------------------------
+
+\section{Education}
+
+\fourItems{Legit Online University}{My House, My State}
+          {PhD in Global International Business ML AI Crypto ChatGPT Computing Science}{May 2025 -- Oct 2025}
+\begin{tightItemize}
+  \item Thesis: \textit{Dijkstra's Algorithm, revolutionary shortest path algorithm that I totally made}
+  \item GPA: 4.20/6.90
+  \item Coursework: Coffee with advisor, arguing with professors for funding
+\end{tightItemize}
+
+\fourItems{Purdue University}{West Lafayette, IN}
+          {B.S. in Computer Science, honorary business major}{Aug 2021 -- May 2025}
+\begin{tightItemize}
+  \item GPA: 6.90 / 4.20, Magma Cum something
+  \item Coursework: ENGL106, SCLA101 (x2), ECON251 (x3), COM217 (B-), CS101 (Dr. George Adams)
+  \item Activities: CS Memers
+\end{tightItemize}
+
+% Experience
+% ------------------------------------------------------------------------------
+
+\section{Experience}
+
+\fourItems{Amazon}{Seattle, WA}
+{Prime Member}{Jan 2021 -- Present}
+\begin{tightItemize}
+  \item Contributed to the US economy and Mr. Bezos' personal wealth by spending way too much
+  \item Improved the service quality and customer satisfaction by arguing with multiple delivery drivers in my front porch
+  \item Saved money by being a st
+\end{tightItemize}
+
+\twoItems{Software Development Engineer}{Jan 2020 -- Present}
+\begin{tightItemize}
+  \item Made 
+\end{tightItemize}
+
+\fourItems{Purdue University Department of Computer Science}{West Lafayette, IN}
+{Research Assistant}{Jan 2022 -- Feb 2022}
+\begin{tightItemize}
+  \item 
+\end{tightItemize}
+
+\twoItems{Course Content Developer}{May 2022 -- Aug 2022}
+\begin{tightItemize}
+  \item Developed hard homework in Java (or Python I don't remember)
+  \item Realized that you can't actually get 100 on the homework bc the grader is broken but didn't tell anyone
+\end{tightItemize}
+
+\twoItems{Undergraduate Teaching Assistant}{Jan 2022 -- Aug 2022}
+\begin{tightItemize}
+  \item Secretly failed 80\% of students to give them motivations and drive
+  \item Played Minecraft in office hours
+\end{tightItemize}
+
+% Projects
+% ------------------------------------------------------------------------------
+
+\section{Projects}
+
+\twoItems{\textbf{Theovim}{ | }\textit{Lua, Shell}}{Jan 2023 -- Present}
+\begin{tightItemize}
+  \item The best check it out \href{https://github.com/theopn/theovim}{here}
+\end{tightItemize}
+
+\twoItems{\textbf{Personal Website}{ | }\textit{Trendy JS framework that is now obsolete}}{Jan 2022 -- Apr 2022}
+\begin{tightItemize}
+  \item I gave up
+\end{tightItemize}
+
+% Skills
+% ------------------------------------------------------------------------------
+
+\section{Skills}
+
+\begin{itemize}[itemsep=-0.3em, leftmargin=5pt, label={}]
+  \item \textbf{\large Languages}: Brainfuck, Scratch, \textbf{\large George Bunch Adams III}, English
+  \item \textbf{\large Tools}: Screw driver, Linux (Arch btw), \LaTeX
+\end{itemize}
+
+\end{document}
+
+% Resume Ends
+% ------------------------------------------------------------------------------
+
